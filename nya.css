@@ -1,0 +1,15 @@
+body {
+  margin: 2rem;
+  font-family: sans-serif;
+}
+
+.photo {
+  display: block;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  margin-top: 0.75rem;
+}
