@@ -1,0 +1,41 @@
+# にゃあ系ページの軽い健全性チェック（push のたび）
+name: nyaa check
+
+on:
+  push:
+    branches: ["**"]
+
+jobs:
+  nya-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 必須ファイルがあること
+        run: |
+          test -f nya.html || { echo "nya.html が見つかりません"; exit 1; }
+          test -f nya.css || { echo "nya.css が見つかりません"; exit 1; }
+
+      - name: HTML の最低限の形
+        run: |
+          grep -qF '<!DOCTYPE html>' nya.html || { echo "DOCTYPE がありません"; exit 1; }
+          grep -qF 'charset="utf-8"' nya.html || { echo "charset=utf-8 の宣言がありません"; exit 1; }
+          grep -qF 'lang="ja"' nya.html || { echo 'lang="ja" がありません'; exit 1; }
+          grep -qF '</html>' nya.html || { echo "閉じタグ </html> がありません"; exit 1; }
+
+      - name: img の src がリポジトリ上に存在すること
+        run: |
+          set -euo pipefail
+          mapfile -t paths < <(grep -oE 'src="[^"]+"' nya.html | sed 's/^src="//;s/"$//' | sort -u)
+          if [[ ${#paths[@]} -eq 0 ]]; then
+            echo "警告: img の src が 1 つもありません（意図ならこのジョブからこの step を外してください）"
+            exit 1
+          fi
+          for p in "${paths[@]}"; do
+            if [[ ! -f "$p" ]]; then
+              echo "参照先が見つかりません: $p"
+              exit 1
+            fi
+          done
+          echo "OK: ${#paths[@]} 件の画像パス"
