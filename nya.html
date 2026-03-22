@@ -2,11 +2,176 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>猫</title>
-  <link rel="stylesheet" href="nya.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>猫のページ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f7f5f2;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+    header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.75rem;
+    }
+    header p {
+      margin: 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    .hero {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      margin-bottom: 2rem;
+    }
+    @keyframes spin-cat {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .hero-cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-cats img {
+      display: block;
+      flex: 1 1 140px;
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      transform-origin: center center;
+      animation: spin-cat 6s linear infinite;
+    }
+    .hero .lead {
+      margin: 1rem 0 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    section {
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+    }
+    section h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.1rem;
+      color: #333;
+      border-left: 4px solid #c45;
+      padding-left: 0.6rem;
+    }
+    section p {
+      margin: 0 0 0.75rem;
+    }
+    section p:last-child {
+      margin-bottom: 0;
+    }
+    ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+    }
+    dl {
+      margin: 0;
+      display: grid;
+      gap: 0.5rem 1rem;
+    }
+    dt {
+      font-weight: 600;
+      color: #444;
+    }
+    dd {
+      margin: 0 0 0.75rem 0;
+      padding-left: 0.5rem;
+      border-left: 3px solid #e8e4de;
+    }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ccc;
+      font-size: 0.85rem;
+      color: #666;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <img src="image/ねこ.jpg" alt="猫" class="photo">
-  <p class="caption">猫です</p>
+  <div class="wrap">
+    <header>
+      <h1>ねこ紹介サイト</h1>
+      <p>ねこです。</p>
+    </header>
+
+    <div class="hero">
+      <div class="hero-cats">
+        <img src="image/ねこ.jpg" alt="猫の写真 1">
+        <img src="image/ねこ.jpg" alt="猫の写真 2">
+        <img src="image/ねこ.jpg" alt="猫の写真 3">
+      </div>
+      <p class="lead">猫です</p>
+      <p>上の写真は、このサイトの主役の猫です。</p>
+    </div>
+
+    <section>
+      <h2>猫とは</h2>
+      <p>猫（ねこ）は、ネコ科ネコ属に分類される小さな哺乳類です。人との共生の歴史が長く、世界中でペットとして飼われています。</p>
+      <p>性格は個体差が大きく、人懐っこい子から、やや距離を置きたがる子まで様々です。無理に触らず、猫のペースを尊重するのがおすすめです。</p>
+    </section>
+
+    <section>
+      <h2>よくある行動</h2>
+      <ul>
+        <li>ゴロゴロと喉を鳴らす（リラックスや安心のサイン）</li>
+        <li>顔をこすりつける（なじみの印や匂い付け）</li>
+        <li>箱や狭い場所に入る（安心できる空間を好む）</li>
+        <li>夜や早朝に活発になる（もともと薄暮性の傾向）</li>
+        <li>水を飲む量が少なめなことも（食事で水分をとる習性）</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>飼うときのメモ</h2>
+      <dl>
+        <dt>食事</dt>
+        <dd>年齢・体重に合わせたフード量。急な銘柄変更はお腹を壊しやすいので少しずつ。</dd>
+        <dt>トイレ</dt>
+        <dd>毎日の砂の様子をチェック。臭い・形・回数の変化は体調のサインになることがあります。</dd>
+        <dt>遊び</dt>
+        <dd>おもちゃやじゃれ合いで運動不足を防ぐ。爪とぎ場を用意すると家具への被害を減らせます。</dd>
+        <dt>病院</dt>
+        <dd>定期健診やワクチンは獣医さんに相談。無理やり連れて行くとストレスになるので、慣らしも大切です。</dd>
+      </dl>
+    </section>
+
+
+
+    <footer>
+      <p>以上、HTML 完結のデモでした。</p>
+    </footer>
+  </div>
 </body>
 </html>
